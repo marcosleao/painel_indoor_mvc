@@ -1,0 +1,128 @@
+﻿@model PainelIndoor.Application.Core.Services.Paineis.ViewModels.PaineisResult
+@using PainelIndoor.Application.Core.Enums;
+
+@if (Model.TipoConteudo == TipoConteudo.VideoLocal)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+<video id="painel-4" style="width:100%;height:100%;" @item._Mudo @item._AutoPlay @item._Looping>
+
+    <source src="~/@item.Caminho" type="video/mp4">
+    <source src="video.ogg" type="video/ogg">
+    Seu navegador não suporta
+    <code>video</code>.
+
+</video>
+    }
+}
+else if (Model.TipoConteudo == TipoConteudo.VideoYouTube)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+        @*<div id="videoYouTube"></div>*@
+        <iframe id="videoYouTube" src="@item.Caminho?enablejsapi=1" frameborder="0" style="width:100%;" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+
+    }
+}
+else if (Model.TipoConteudo == TipoConteudo.PaginaHtml)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+<iframe type="text/html" src="@item.Caminho" style="width:100%;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    }
+}
+else if (Model.TipoConteudo == TipoConteudo.Indicadores)
+{
+<div id="slideIndicadores" class="carousel slide" data-ride="carousel" style="margin:0;padding:0;">
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <p class="texto-centro">PELO FUTURO DO TRABALHO</p>
+        </div>
+
+        @foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+            {
+        <div class="carousel-item" data-interval="@item.TempoExibicao" style="max-height:200px">
+            @Html.Raw(item.Caminho)
+        </div>
+            }
+    </div>
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#slideIndicadores" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Voltar</span>
+    </a>
+    <a class="carousel-control-next" href="#slideIndicadores" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+    </a>
+</div>
+}
+else if (Model.TipoConteudo == TipoConteudo.ImagemFixa)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+<img style="width:100%;height:100%" src="@item.Caminho" />
+    }
+}
+else if (Model.TipoConteudo == TipoConteudo.ImagemSlide)
+{
+<div id="slideImagens" class="carousel slide" data-ride="carousel" style="margin:0;padding:0;">
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <p class="texto-centro">PELO FUTURO DO TRABALHO</p>
+        </div>
+
+        @foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+            {
+        <div class="carousel-item" data-interval="@item.TempoExibicao">
+            @Html.Raw(item.Caminho)
+        </div>
+            }
+    </div>
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#slideImagens" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Voltar</span>
+    </a>
+    <a class="carousel-control-next" href="#slideImagens" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+    </a>
+</div>
+}
+else if (Model.TipoConteudo == TipoConteudo.PaginaBi)
+{
+<div id="slidePowerBi" class="carousel slide" data-ride="carousel" style="margin:0;padding:0;">
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <p class="texto-centro">PELO FUTURO DO TRABALHO</p>
+        </div>
+
+        @foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+            {
+        <div class="carousel-item">
+            @Html.Raw(item.Caminho)
+        </div>
+            }
+    </div>
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#slidePowerBi" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Voltar</span>
+    </a>
+    <a class="carousel-control-next" href="#slidePowerBi" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+    </a>
+</div>
+}
+else if (Model.TipoConteudo == TipoConteudo.Outros)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+<partial name="@item.Caminho" />
+    }
+}

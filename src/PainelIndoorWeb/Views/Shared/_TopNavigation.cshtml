@@ -1,0 +1,44 @@
+﻿@* @using Microsoft.AspNetCore.Identity
+@using Painel.Infra.Data.Shift.Identity.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManeger
+
+@{
+    var user = await UserManeger.GetUserAsync(User);
+}
+
+
+
+
+<!-- top navigation -->
+
+<div class="top_nav">
+    <div class="nav_menu">
+        <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+
+        <nav class="nav navbar-nav">
+            @if (SignInManager.IsSignedIn(User))
+            {
+            <ul class="navbar-right">
+
+                <li class="nav-item dropdown open" style="padding-left: 15px;">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                        <img src="~/build/images/user.png" alt="">@user.NormalizedUserName
+                    </a>
+                    <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out pull-right"></i> Sair</a>
+                    </div>
+                </li>
+            </ul>
+            }
+        </nav>
+    </div>
+</div> 
+
+<!-- /top navigation -->
+<!--FORM DE LOGOUT-->
+<section>
+    <form asp-controller="Acesso" asp-action="Sair" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" id="logoutForm" class="navbar-right"></form>
+</section> *@
