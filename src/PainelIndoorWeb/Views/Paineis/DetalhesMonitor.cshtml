@@ -1,0 +1,83 @@
+﻿@model PainelIndoor.Application.Core.Services.Paineis.ViewModels.PaineisResult
+@using PainelIndoor.Application.Core.Enums;
+
+@{
+    ViewData["Title"] = "Detalhes do Monitor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="">
+        <div class="title_left">
+            <h3>@ViewData["Title"]</h3>
+            <a asp-action="Inicio" asp-controller="Paineis" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Volar</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adicionar-conteudo"><i class="fa fa-plus"></i> Conteúdo</button>
+            <button type="button" id="reloadPage" class="btn btn-success" title="Atualizar página do cliente"><i class="fa fa-refresh"></i></button>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <tr>
+            <td colspan="6">Monitor: <strong>@Model.Descricao</strong></td>
+            <td colspan="6">Filial: <strong>@Model.CodFilial</strong></td>
+        </tr>
+    </table>
+</div>
+<div class="row">
+    <div id="tv-min" class="col-md-3">
+        <a asp-action="Inicio" asp-controller="Home"><img id="img-min" style="position:absolute;z-index: 100;" src="@Model.Logo" /></a>
+        <partial name="_conteudo_min" model="Model" />
+    </div>
+    <div class="col-md-9">
+
+        @if (Model.Conteudos.Any())
+        {
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Tipo de Conteúdo</th>
+                        <th>Ativo?</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Conteudos)
+                    {
+                        <tr>
+                            <td>@item.Descricao</td>
+                            <td>@item._TipoConteudo</td>
+                            <td>@item.Status</td>
+                            <td width="200">
+                                <button asp-disabled="@item.DesabilitaAlterar" class="btn btn-info" onclick="obterConteudoPorId('@item.Id')" title="Editar"><i class="fa fa-edit"></i></button>
+
+                                @if (!item.DesabilitaVideoPlayar)
+                                {
+                                <button type="button" id="playVideo" class="btn btn-danger" title="YouTube Play"><i class="fa fa-youtube-play"></i></button>
+
+                                @*<input type="range" id="volumeYTVideo" min="0" max="100" onchange="volumeVideo(this.value)" />*@
+                                }
+                                else
+                                {
+ <!--Este elemento está disponivel apenas para leitura pelas funções do signalr -->
+                                <i id="playVideo"></i>
+                                }
+                            </td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+        }
+
+    </div>
+</div>
+
+<partial name="_conteudo_alterar" model="Model.Alterar" />
+<partial name="_conteudo_adicionar" model="Model.Adicionar" />
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script type="text/javascript" src="~/js/paineis-gestao.js"></script>
+
+    <script src="~/js/signalr_ctrl.js"></script>
+}

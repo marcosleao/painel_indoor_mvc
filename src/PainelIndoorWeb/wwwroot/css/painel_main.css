@@ -1,0 +1,184 @@
+﻿body {
+    
+}
+
+/*TÍTULO GESTÃO ESTRATÉGICA*/
+.titulo-ge {
+    text-align: left;
+    color: white;
+    font-size: 1.2vw;
+    font-weight: bold
+}
+
+/*CONTEÚDO GESTAO ESTRATÉGICA*/
+.conteudo-ge {
+    text-align: center;
+    margin-top: 15%;
+    color: white;
+    font-size: 1vw;
+    font-weight: bold
+}
+
+.col-lg-3, .col-lg-6, .col-lg-12 {
+    background: url('../uploads/img/industria_presente.png') no-repeat top left;
+}
+
+#tv-min {
+    background: url('../uploads/img/industria_presente.png') no-repeat top left ;
+    height: 25vh;
+    margin:0;
+    padding:0;
+}
+
+#img-min {
+
+   width: 4vw;
+}
+
+#tv-min, col-md-12{
+    width:20vw;
+}
+
+.titulo-1 {
+    text-align: left;
+    color: white;
+    font-size: 1.5vw;
+    font-weight: bold
+}
+
+#pg-p1, #pg-p2, #pg-p3, #pg-p4 {
+    text-align: center;
+    color: white;
+    font-size: 1.2vw;
+    padding:10%;
+    font-weight: bold
+}
+.carousel, item{
+    height:100%
+}
+
+.carousel-item {
+    width: 1920px;
+    height:1080px;
+    margin: 0;
+    padding: 0;
+}
+
+.titulo-2 {
+    text-align: center;
+    color: white;
+    font-size: 1vw;
+    font-weight: bold
+}
+
+/**/
+.titulo-painel-2 {
+    font-size: 1vw;
+    font-weight: bold;
+    text-align: center
+}
+
+.img-painel {
+    box-shadow: 5px 5px 5px #aaaaaa;
+    text-align: center;
+    padding: 1%
+}
+
+    .img-painel span {
+        font-size: 0.5vw;
+        font-weight: bold;
+        position: absolute;
+        text-align: center;
+        text-orientation: upright;
+        writing-mode: vertical-rl
+    }
+
+    iframe {
+        position: page;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        background-size: cover;
+    }
+
+.carousel-item{
+    height: 100vh;
+}
+
+/*PAINEL DE PRODUÇÃO EDUCAÇÃO PROFISSIONAL*/
+.painel-producao-ep {
+    background-color: white;
+    border-radius: 0 1rem 0 1rem;
+    padding: 2%;
+    width: 92%;
+    height: 70vh;
+    margin-left: 4.5%;
+    border: 1px solid #BFBFBF;
+    box-shadow: 5px 5px 5px #aaaaaa;
+}
+
+/*PAINEL DE PRODUÇÃO EDUCAÇÃO PROFISSIONAL*/
+.painel-sgq {
+    background-color: white;
+    border-radius: 0 1rem 0 1rem;
+    padding: 2%;
+    width: 92%;
+    height: 70vh;
+    margin-left: 4.5%;
+    border: 1px solid #BFBFBF;
+    box-shadow: 5px 5px 5px #aaaaaa;
+}
+
+.titulo-painel-ep, .titulo-dados-ep {
+    font-size: 1vw;
+    font-weight: bold;
+    text-align: left;
+    margin:auto;
+    
+}
+
+.valor-resultado-ep {
+    font-size: 1vw;
+    font-weight: bold;
+    padding: 0;
+    text-align: center;
+    margin-top: 4%
+}
+
+.texto-centro {
+    text-align: center;
+    color: white;
+    margin-top: 15%;
+    font-size: 1.5vw;
+    font-weight: bold
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+
+    #tv-min {
+        background: url('../uploads/img/industria_presente.png') no-repeat top left;
+        height: 33vh;
+        width:100vw;
+        margin: 0;
+        padding: 0;
+        overflow-y:scroll;
+    }
+
+    #img-min{
+        width:20vw;
+    }
+}
+
+@media (min-width: 768px) {
+
+    #tv-min {
+        background: url('../uploads/img/industria_presente.png') no-repeat top left;
+        max-height: 55vh;
+        margin: 0;
+        padding: 0;
+    }
+}

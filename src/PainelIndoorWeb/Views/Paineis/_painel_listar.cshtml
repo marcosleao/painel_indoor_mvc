@@ -1,0 +1,34 @@
+﻿@model PainelIndoor.Application.Core.Services.Paineis.ViewModels.PaineisInicio
+
+@if (Model.Paineis.Any())
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Filial</th>
+                <th>Tipo de Conteúdo</th>
+                <th>Ativo?</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Paineis)
+            {
+                <tr>
+                    <td>@item.Descricao</td>
+                    <td>@item.Filial</td>
+                    <td>@item._TipoConteudo</td>
+                    <td width="100">@item.Ativo</td>
+                    <td width="200">
+                        <a class="btn btn-primary" asp-action="DetalhesMonitor" asp-controller="Paineis" asp-route-id="@item.Id" title="Detalhes"><i class="fa fa-search"></i></a>
+                        <button class="btn btn-info" onclick="obterMonitorPorId('@item.Id', '@Model.ParametrosPesquisa.PaginaAtual')" title="Editar"><i class="fa fa-edit"></i></button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+<partial name="_painel_paginacao" model="Model.ParametrosPesquisa" />

@@ -1,0 +1,60 @@
+﻿@model PainelIndoor.Application.Core.Services.Paineis.ViewModels.PaineisRequest
+@inject PainelIndoor.Application.Core.Services.Cadastros.CadastrosHandler filiaisService
+
+<!-- Large modal -->
+<div class="modal fade" id="alterar-monitor" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg"> <!--sm,xl,lg-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Alterar Monitor</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <form id="frm-alterar-monitor" asp-action="AlterarMonitor" asp-controller="Paineis" method="post" data-parsley-validate role="form">
+                <input name="Pagina" required="required" hidden />
+
+                <input asp-for="Id" name="Id" required="required" hidden />
+                <span id="frm-alterar-monitor-val-Id" asp-validation-for="Id" class="text-danger"></span>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label asp-for="Descricao"></label>
+                            <input asp-for="Descricao" name="Descricao" required="required" class="form-control" />
+                            <span id="frm-alterar-monitor-val-Descricao" asp-validation-for="Descricao" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label asp-for="CodFilial"></label>
+@*                             <select id="frm-alterar-monitor-CodFilial" asp-for="CodFilial" name="CodFilial" required="required" asp-items="@filiaisService.FiliaisDropDown(null, true).Result" class="form-control"></select>
+ *@                            <span id="frm-alterar-monitor-val-CodFilial" asp-validation-for="CodFilial" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label asp-for="TipoConteudo"></label>
+@*                             <select id="frm-alterar-monitor-TipoConteudo" asp-for="TipoConteudo" name="TipoConteudo" required="required" asp-items="@dropDownService.TiposConteudos()" class="form-control"></select> *@
+                            <span id="frm-alterar-monitor-val-TipoConteudo" asp-validation-for="TipoConteudo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="IsEnabled"></label>
+                            <input id="frm-alterar-monitor-IsEnabled" asp-for="IsEnabled" name="IsEnabled" class="checkbox" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <span id="validar-cadastro" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="alterarMonitor()">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

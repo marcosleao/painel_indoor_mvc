@@ -1,0 +1,63 @@
+﻿@model PainelIndoor.Application.Core.Services.Paineis.ViewModels.PaineisResult
+
+<img src="https://www.senaimt.ind.br/assets/images/logo-senai.png" />
+<div id="myCarousel2" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-interval="5000">
+            <p class="texto-centro">PELO FUTURO DO TRABALHO</p>
+        </div>
+        <div class="carousel-item" data-interval="15000">
+            <div class="painel-producao-ep">
+                <h1 class="titulo-painel-ep">MATRÍCULAS E PRODUÇÃO</h1>
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="titulo-painel-2">PLANEJADO</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="titulo-painel-2">EXECUTADO</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="titulo-painel-2">%</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 img-painel">
+                        <img style="width:55%;" src="~/painel-old/img/alunos.png" />
+                        <span>MATR</span>
+                    </div>
+                    <div class="col-md-4">
+@*                         <div class="valor-resultado-ep">@Model.ProducaoTotal.MetaMatriculas.Value.ToString("0,00")</div>
+ *@                    </div>
+                    <div class="col-md-4">
+@*                         <div class="valor-resultado-ep">@Model.ProducaoTotal.MatriculasTotais.Value.ToString("0,00")</div>
+ *@                    </div>
+                    <div class="col-md-2">
+@*                         <div class="valor-resultado-ep">@Model.ProducaoTotal.DesempenhoMatriculas</div>
+ *@
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 img-painel">
+                        <img style="width:55%; margin:2%" src="~/painel-old/img/producao.png" />
+                        <span>PROD</span>
+
+                    </div>
+                    <div class="col-md-4">
+@*                         <div class="valor-resultado-ep">@Model.ProducaoTotal.MetaAlunoHora.Value.ToString("0,00")</div>
+ *@
+                    </div>
+                    <div class="col-md-4">
+@*                         <div class="valor-resultado-ep">@Model.ProducaoTotal.ChExecutadaTotal.Value.ToString("0,00")</div>
+ *@                    </div>
+                    <div class="col-md-2">
+@*                         <div class="valor-resultado-ep">@Model.ProducaoTotal.DesempenhoAlunoHora</div>
+ *@                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,102 @@
+﻿@model PainelIndoor.Application.Core.Services.Paineis.ViewModels.PaineisResult
+@using PainelIndoor.Application.Core.Enums;
+
+@if (Model.TipoConteudo == TipoConteudo.VideoLocal)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+        <video id="painel-4" style="width:100%;height:100%;" @item._Mudo @item._AutoPlay @item._Looping>
+
+            <source src="~/@item.Caminho" type="video/mp4">
+            <source src="video.ogg" type="video/ogg">
+            Seu navegador não suporta
+            <code>video</code>.
+
+        </video>
+    }
+}
+else if (Model.TipoConteudo == TipoConteudo.VideoYouTube)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+<div class="col-md-12" style="width:1920px;height:1080px">
+
+    <iframe id="videoYouTube" width="560" height="315" src="@item.Caminho?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+</div>
+    }
+}
+else if (Model.TipoConteudo == TipoConteudo.PaginaHtml)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+        <iframe type="text/html" src="@item.Caminho" width="1920" height="1080" frameborder="0" allow="accelerometer; enablejsapi; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    }
+}
+else if (Model.TipoConteudo == TipoConteudo.Indicadores)
+{
+    <div id="slideIndicadores" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+            @Html.Raw(Model.PoliticaQualidade)
+
+            @foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+            {
+                <div class="carousel-item" data-interval="@item.TempoExibicao">
+                    @Html.Raw(item.Caminho)
+                </div>
+            }
+        </div>
+    </div>
+}
+else if (Model.TipoConteudo == TipoConteudo.ImagemFixa)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+        <img style="width:1920px;height:1080px" src="@item.Caminho" />
+    }
+}
+else if (Model.TipoConteudo == TipoConteudo.ImagemSlide)
+{
+    <div id="slideImagens" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+            @Html.Raw(Model.PoliticaQualidade)
+
+            @foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+            {
+                <div class="carousel-item" data-interval="@item.TempoExibicao">
+                    @Html.Raw(item.Caminho)
+                </div>
+            }
+        </div>
+    </div>
+}
+else if (Model.TipoConteudo == TipoConteudo.PaginaBi)
+{
+    <div id="slidePowerBi" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+            @Html.Raw(Model.PoliticaQualidade)
+
+            @foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+            {
+                <div class="carousel-item" data-interval="@item.TempoExibicao">
+                    @Html.Raw(item.Caminho)
+                </div>
+            }
+        </div>
+    </div>
+}
+else if (Model.TipoConteudo == TipoConteudo.Outros)
+{
+    foreach (var item in Model.Conteudos.Where(t => t.TipoConteudo == Model.TipoConteudo && t.MonitorId == Model.Id && t.IsEnabled == true))
+    {
+        <partial name="@item.Caminho" />
+    }
+}
+
+<!--Estes elementos são necessários para receber comandos via SignalR-->
+<input type="button" id="reloadPage" hidden />
+<input type="button" id="playVideo" hidden />
+<input type="range" id="volumeYTVideo" min="0" max="100" onchange="volumeVideo(this.value)" hidden />
+

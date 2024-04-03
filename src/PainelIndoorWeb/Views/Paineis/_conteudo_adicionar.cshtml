@@ -1,0 +1,77 @@
+﻿@model PainelIndoor.Application.Core.Services.Conteudos.ViewModels.ConteudosRequest
+
+<!-- Large modal -->
+<div class="modal fade" id="adicionar-conteudo" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg"> <!--sm,xl,lg-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Adicionar Conteúdo</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form id="frm-adicionar-conteudo" asp-action="AdicionarConteudo" asp-controller="Paineis" enctype="multipart/form-data" 
+                  method="post" data-parsley-validate role="form">
+                <input if="frm-adicionar-conteudo-MonitorId" asp-for="MonitorId" name="MonitorId" required="required" hidden />
+                <input if="frm-adicionar-conteudo-TipoConteudo" asp-for="TipoConteudo" name="TipoConteudo" required="required" hidden />
+                <span id="frm-adicionar-conteudo-val-TipoConteudo" asp-validation-for="TipoConteudo" class="text-danger"></span>
+                <span id="frm-adicionar-conteudo-val-MonitorId" asp-validation-for="MonitorId" class="text-danger"></span>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <label asp-for="Descricao"></label>
+                            <input id="frm-adicionar-conteudo-Descricao" asp-for="Descricao" name="Descricao" required="required" class="form-control" />
+                            <span id="frm-adicionar-conteudo-val-Descricao" asp-validation-for="Descricao" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <div class="row" @Model.OcultaCaminho>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <label asp-for="Caminho"></label>
+                            <textarea id="frm-adicionar-conteudo-Caminho" asp-for="Caminho" name="Caminho" rows="3" class="form-control"></textarea>
+                            <span id="frm-adicionar-conteudo-val-Caminho" asp-validation-for="Caminho" class="text-danger"></span>
+                        </div>
+                       
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12" @Model.OcultaUploadFile>
+                            <label asp-for="Arquivo"></label>
+                            <input id="frm-adicionar-conteudo-Arquivo" asp-for="Arquivo" name="Arquivo" />
+                        </div>
+                        <div class="form-group col-md-3 col-sm-12 col-xs-12" @Model.OcultaTempoExibicao>
+                            <label asp-for="TempoExibicao"></label>
+                            <input id="frm-adicionar-conteudo-TempoExibicao" @Model.DesabilitaTempoExibicao value="0" asp-for="TempoExibicao" name="TempoExibicao" required="required" class="form-control" />
+                            <span id="frm-adicionar-conteudo-val-TempoExibicao" asp-validation-for="TempoExibicao" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-2 col-sm-12 col-xs-12">
+                            <label asp-for="IsEnabled"></label>
+                            <input id="frm-adicionar-conteudo-IsEnabled" asp-for="IsEnabled" name="IsEnabled" class="checkbox" />
+                        </div>
+                        <div class="form-group col-md-2 col-sm-12 col-xs-12" @Model.OcultaAtributosVideoLocal>
+                            <label asp-for="Mudo"></label>
+                            <input id="frm-adicionar-conteudo-Mudo" asp-for="Mudo" name="Mudo" class="checkbox" />
+                        </div>
+                        <div class="form-group col-md-2 col-sm-12 col-xs-12" @Model.OcultaAtributosVideoLocal>
+                            <label asp-for="AutoPlay"></label>
+                            <input id="frm-adicionar-conteudo-AutoPlay" asp-for="AutoPlay" name="AutoPlay" class="checkbox" />
+                        </div>
+                        <div class="form-group col-md-2 col-sm-12 col-xs-12" @Model.OcultaAtributosVideoLocal>
+                            <label asp-for="Looping"></label>
+                            <input id="frm-adicionar-conteudo-Looping" asp-for="Looping" name="Looping" class="checkbox" />
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <span id="frm-adicionar-conteudo-val-all" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="adicionarConteudoMonitor();return false">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

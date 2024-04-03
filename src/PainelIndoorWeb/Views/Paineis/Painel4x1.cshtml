@@ -1,0 +1,21 @@
+@model Task<PainelIndoor.Application.Core.Services.Paineis.ViewModels.PaineisInicio>
+
+@{
+    ViewData["Title"] = "Painel 4 x 1";
+    Layout = "~/Views/Shared/_LayoutPainel.cshtml";
+}
+
+<div class="row">
+
+    @if (Model.Result.Paineis.Any())
+    {
+        @foreach (var item in Model.Result.Paineis)
+        {
+            <div class="col-lg-3">
+                @*<a asp-action="Inicio" asp-controller="Home"><img style="position:fixed;z-index: 100;" src="@item.Logo" /></a>*@
+                <partial name="_conteudo_listar" model="item" />
+            </div>
+        }
+    }
+</div>
+

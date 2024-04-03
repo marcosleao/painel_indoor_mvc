@@ -1,0 +1,32 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:15648",
+      "sslPort": 44393
+    }
+  },
+  "profiles": {
+    "IIS Express - Dev": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5200",
+      "jsWebView2Debugging": true,
+      "nativeDebugging": true
+    },
+    "IIS Express - Prd": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "applicationUrl": "http://localhost:5200",
+      "jsWebView2Debugging": true,
+      "nativeDebugging": true
+    }
+  }
+}

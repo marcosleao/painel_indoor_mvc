@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Links Distribuíveis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="display: block;">
+
+    <div class="col-md-12 text-uppercase">
+
+        <h4>@ViewData["Title"]</h4>
+        <small>Somenete para abrir no navegador dos monitores. Para testes, verifique as observações abaixo.</small>
+    </div>
+
+    <div class="col-md-12">
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Link</th>
+                <th>Observação</th>
+            </tr>
+            <tr>
+                <td>
+                    <a asp-action="PainelSenai" asp-controller="Paineis" target="_blank">SENAI DR</a>
+                </td>
+                <td>Para visalizar como a tela será exibida nos monitores, ao abrir a página, estabeleça a responsividade em 7680 x 1080 (width x heigth)</td>
+            </tr>
+            <tr>
+                <td>
+                    <a asp-action="PainelSesi" asp-controller="Paineis" target="_blank">SESI DR</a>
+                </td>
+                <td>Para visalizar como a tela será exibida nos monitores, ao abrir a página, estabeleça a responsividade em 7680 x 1080 (width x heigth)</td>
+            </tr>
+            <tr>
+                <td>
+                    <a asp-action="Painel2x1" asp-controller="Paineis" target="_blank">SENAI CBÁ</a>
+                </td>
+                <td>Para visalizar como a tela será exibida nos monitores, ao abrir a página, estabeleça a responsividade em 3840 x 1080 (width x heigth)</td>
+            </tr>
+            <tr>
+                <td>
+                    <a asp-action="Painel1x1" asp-controller="Paineis" target="_blank">SENAI LRV</a>
+                </td>
+                <td>Para visalizar como a tela será exibida nos monitores, ao abrir a página, estabeleça a responsividade em 1920 x 1080 (width x heigth)</td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+

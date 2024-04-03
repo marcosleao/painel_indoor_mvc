@@ -1,0 +1,23 @@
+@model PainelIndoor.Application.Core.Services.Paineis.ViewModels.PaineisInicio
+
+@{
+    ViewData["Title"] = "Painel1x1";
+    Layout = "~/Views/Shared/_LayoutPainel.cshtml";
+}
+
+<div class="row">
+
+    @if (Model.Paineis.Any())
+    {
+        @foreach (var item in Model.Paineis)
+        {
+            <div class="col-lg-12">
+                @*<a asp-action="Inicio" asp-controller="Home"><img style="position:fixed;z-index: 100;" src="@item.Logo" /></a>*@
+                <partial name="_conteudo_listar" model="item" />
+            </div>
+        }
+    }
+
+</div>
+
+
